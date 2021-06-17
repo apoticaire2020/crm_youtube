@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+ {% block contenu %}
+
+<br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>Clients:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Créer Un Client</a>
+			<table class="table table-sm">
+
+                                                #
+					<th>ID</th>
+					<th>CLIENTS</th>
+					<th>TELEPHONE</th>
+                    <th>Detail</th>
+                    {% for c in clients %}
+				     <tr>
+				    <th><a href="{% url 'client' c.id %}">{{c.id}}</a></th>
+				    <th>{{c.nom}}</th>
+				    <th>{{c.telephone}}</th>
+					<th><a class="btn btn-sm btn-success" href="{% url 'client' c.id %}">détail</a></th>
+					</tr>
+				    {% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Les 5 Dernières Comamndes</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'ajout_commande' %}">Ajouter une Commande</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Produit</th>
+					<th>client</th>
+					<th>date</th>
+					<th>Mise à Jour</th>
+					<th>Supprimer</th>
+				</tr>
+                     {% for cm in commandes%}
+                           <tr>
+				       <th>{{cm.produit}}</th>
+					<th>{{cm.client}}</th>
+					<th>{{cm.date_creation}}</th>
+					<th><a class="btn btn-sm btn-success" href="">update</a></th>
+					<th><a class="btn btn-sm btn-danger" href="">delete</a></th>
+						   </tr>
+				       {% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+   {% endblock %}
+
