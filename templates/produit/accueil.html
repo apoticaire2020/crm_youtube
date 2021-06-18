@@ -42,12 +42,12 @@
 					<th>Mise à Jour</th>
 					<th>Supprimer</th>
 				</tr>
-                     {% for cm in commandes%}
+                     {% for cm in commandes %}
                            <tr>
 				       <th>{{cm.produit}}</th>
 					<th>{{cm.client}}</th>
 					<th>{{cm.date_creation}}</th>
-					<th><a class="btn btn-sm btn-success" href="">update</a></th>
+					<th><a class="btn btn-sm btn-success" href="{% url 'modifier_commande' cm.id %}">update</a></th>
 					<th><a class="btn btn-sm btn-danger" href="">delete</a></th>
 						   </tr>
 				       {% endfor %}

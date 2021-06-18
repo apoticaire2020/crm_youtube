@@ -21,11 +21,12 @@ def ajouter_commande(request):
     return render(request,'commande/ajouter_commande.html' , context)
 
 def modifier_commande(request ,  pk):
-    commande= Commande.objects.get(pk)
+
+    commande= Commande.objects.get(id=pk)
     
-    form = CommandForm()
+    form = CommandForm(instance=commande)
     if request.method=='POST':
-        form = CommandForm(request.POST)
+        form = CommandForm(request.POST,instance=commande)
         if form.is_valid():
             form.save()
             return redirect('/')
